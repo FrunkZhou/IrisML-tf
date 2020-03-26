@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/general.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <title>Iris Machine Learning</title>
+  </head>
+  <body>
+    <div class="h-100 d-flex flex-column justify-content-center">
+      <div class="h1 text-center mb-5">Submit Iris learning data</div>
+
+      <div class="d-flex justify-content-center">
+        <form method="post" enctype="multipart/form-data" action="/analyze">
+          <div class="form-group custom-file">
+            <input
+              type="file"
+              class="form-control custom-file-input"
+              id="datafile"
+              name="datafile"
+              accept=".json"
+              required
+            />
+            <label class="custom-file-label" for="datafile">Dataset</label>
+          </div>
+          <button class="btn mt-3 btn-block btn-success" type="submit">
+            Submit & Model
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this)
+      .val()
+      .split("\\")
+      .pop();
+    $(this)
+      .siblings(".custom-file-label")
+      .addClass("selected")
+      .html(fileName);
+  });
+</script>

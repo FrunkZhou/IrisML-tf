@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <title>Iris Prediction</title>
+  </head>
+  <body>
+    <div class="d-flex flex-column justify-content-center">
+      <div class="h1 text-center mb-5">Enter Iris Values</div>
+
+      <div class="d-flex justify-content-center">
+        <form method="post" action="/results">
+          <div class="form-row form-group">
+            <div class="col">
+              <label for="sepalLength">Sepal Length</label>
+              <input
+                type="number"
+                class="form-control"
+                name="sepalLength"
+                placeholder="Sepal Length"
+              />
+            </div>
+            <div class="col">
+              <label for="sepalWidth">Sepal Width</label>
+              <input
+                type="number"
+                class="form-control"
+                name="sepalWidth"
+                placeholder="Sepal Width"
+              />
+            </div>
+          </div>
+          <div class="form-row form-group">
+            <div class="col">
+              <label for="petalLength">Petal Length</label>
+              <input
+                type="number"
+                class="form-control"
+                name="petalLength"
+                placeholder="Petal Length"
+              />
+            </div>
+            <div class="col">
+              <label for="petalWidth">Petal Width</label>
+              <input
+                type="number"
+                class="form-control"
+                name="petalWidth"
+                placeholder="Petal Width"
+              />
+            </div>
+          </div>
+          <div class="form-row form-group">
+            <div class="col">
+              <label for="learningRate">Learning Rate</label>
+              <input
+                type="number"
+                class="form-control"
+                name="learningRate"
+                value="0.06"
+              />
+            </div>
+            <div class="col">
+              <label for="learningEpoch">Epoch</label>
+              <input
+                type="number"
+                class="form-control"
+                name="learningEpoch"
+                value="100"
+              />
+            </div>
+          </div>
+          <button class="btn btn-block btn-success" type="submit">
+            Predict
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
