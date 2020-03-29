@@ -45,35 +45,6 @@ exports.prepareModel = (req, res, next) => {
   next();
 };
 
-exports.renderIrisForm = (req, res) => {
-  res.render("irisTestForm");
-};
-
-exports.predict = (req, res) => {
-  // TODO: make testset simply accept user form data instead of forming it back into an array
-  // this is such a bad way to do it, need to fix
-  var testset = [
-    {
-      // Coerce the values to numbers, since form sets them as strings
-      sepal_length: +req.body.sepalLength,
-      sepal_width: +req.body.sepalWidth,
-      petal_length: +req.body.petalLength,
-      petal_width: +req.body.petalWidth
-    }
-  ];
-  getPrediction(
-    tfModel,
-    { training: dataset, test: testset },
-    {
-      learningEpoch: req.body.learningEpoch,
-      learningRate: req.body.learningRate
-    },
-    data => {
-      res.render("results", { data });
-    }
-  );
-};
-
 var prepareTFModel = () => {
   // we use a sequential neural network
   const model = tf.sequential();
@@ -101,6 +72,35 @@ var prepareTFModel = () => {
     })
   );
   return model;
+};
+
+exports.renderIrisForm = (req, res) => {
+  res.render("irisTestForm");
+};
+
+exports.predict = (req, res) => {
+  // TODO: make testset simply accept user form data instead of forming it back into an array
+  // this is such a bad way to do it, need to fix
+  var testset = [
+    {
+      // Coerce the values to numbers, since form sets them as strings
+      sepal_length: +req.body.sepalLength,
+      sepal_width: +req.body.sepalWidth,
+      petal_length: +req.body.petalLength,
+      petal_width: +req.body.petalWidth
+    }
+  ];
+  getPrediction(
+    tfModel,
+    { training: dataset, test: testset },
+    {
+      learningEpoch: req.body.learningEpoch,
+      learningRate: req.body.learningRate
+    },
+    data => {
+      res.render("results", { data });
+    }
+  );
 };
 
 var getPrediction = (model, data, parameters, callback) => {
