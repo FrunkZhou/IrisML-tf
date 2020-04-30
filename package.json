@@ -20,7 +20,7 @@
     "express-session": "^1.14.1",
     "flash": "^1.1.0",
     "formidable": "^1.2.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
     "tfjs": "^0.6.0"
